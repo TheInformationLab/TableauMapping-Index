@@ -1,0 +1,19 @@
+{
+    "public": false,
+    "version" : 2,
+    "alias": "tableaumapping.bi Index",
+    "env": {
+        "DBUSER": "@tableaumapping_dbuser",
+        "DBPASS": "@tableaumapping_dbpass"
+    },
+    "builds": [
+        {   
+            "src" : "bin/www",
+            "use": "@now/node-server"
+        }
+    ],
+    "routes" : [ 
+        {"src": "/(.*)", "dest": "bin/www"},
+        {"src": "/index/(.*)", "dest": "bin/www"}
+    ]
+}
