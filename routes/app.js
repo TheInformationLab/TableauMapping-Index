@@ -37,7 +37,9 @@ router.post('/item', function(req, res, next) {
     if (error) throw new Error(error);
     var geoObj = turf.flatten(body.data);
     var spatialCentroid = turf.centroid(geoObj);
+    console.log('[app.js] Looking for spatial ID', req.body.id);
     Spatial.findById(mongoose.Types.ObjectId(req.body.id), function (err, spatial) {
+      console.log('[app.js] Found spatial', req.body.id);
       if (err) {
         //mongoose.connection.close();
         return res.status(500).json({
@@ -46,7 +48,7 @@ router.post('/item', function(req, res, next) {
         });
       }
       var buildIndex = [];
-      console.log("Indexing " + spatial.country + " ~ " + spatial.name);
+      console.log("[app.js] Indexing " + spatial.country + " ~ " + spatial.name);
       var centroidStr = "{\"lat\": \"\", \"lng\": \"\"}"
       if (spatialCentroid && spatialCentroid.geometry) {
         centroidStr = "{\"lat\": "+spatialCentroid.geometry.coordinates[1]+", \"lng\": "+spatialCentroid.geometry.coordinates[0]+"}"

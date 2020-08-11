@@ -19,7 +19,7 @@
     "express-healthcheck": "^0.1.0",
     "jsonwebtoken": "^8.1.0",
     "moment": "^2.20.1",
-    "mongoose": "^4.13.7",
+    "mongoose": "^5.9.16",
     "mongoose-gridstore": "^0.1.25",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.9.0",
